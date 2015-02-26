@@ -4,5 +4,9 @@
     <string name="app_name">Nutra-o</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="openDrawer">hello</string>
+    <string name="closeDrawer">hello</string>
+
+
 
 </resources>
