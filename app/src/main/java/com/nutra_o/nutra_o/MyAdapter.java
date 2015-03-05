@@ -20,7 +20,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     private String name;        //String Resource for header View Name
     private int profile;        //int Resource for header view profile picture
-    private String email;       //String Resource for header view email
+    private String email;       //String Resource for header view email bobo
 
 
     // Creating a ViewHolder which extends the RecyclerView View Holder
