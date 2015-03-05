@@ -100,7 +100,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
             ViewHolder vhHeader = new ViewHolder(v,viewType); //Creating ViewHolder and passing the object of type view
 
-            return vhHeader; //returning the object created
+            return vhHeader; //returning the object created heej
 
 
         }
