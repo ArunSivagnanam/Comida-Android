@@ -1,10 +1,17 @@
 package com.nutra_o.nutra_o;
 
+import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONArray;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,33 +27,7 @@ public class LoginScreen extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
 
-        new Thread(new Runnable(){
-
-
-            @Override
-            public void run() {
-                try {
-                    InputStream stream = new URL("http://comida-service.azurewebsites.net/api/user").openStream();
-                    InputStreamReader is = new InputStreamReader(stream);
-
-                    BufferedReader reader = new BufferedReader(is);
-
-                    String line;
-                    StringBuilder str =  new StringBuilder();
-
-                    while ((line = reader.readLine()) != null) {
-                        str.append(line);
-                    }
-                    reader.close();
-
-                    Log.i("JSON RESULT",line);
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-
+        view = (TextView) findViewById(R.id.textView);
     }
 
 
@@ -71,4 +52,64 @@ public class LoginScreen extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void testMethod(View v){
+        Log.i("INFO","button method called");
+
+        new AsyncTask<String, String, String>() {
+
+            protected String doInBackground(String... urls) {
+
+                ServiceConnector serviceConnector = new ServiceConnector();
+
+
+                String json = "{\n" +
+                        "\"id\": \"1\",\n" +
+                        "\"firstName\" :\"Arukjkjkjn\",\n" +
+                        "\"lastName\" : \"Sivagnanam\",\n" +
+                        "\"address\" : \"Haraldslundvej\",\n" +
+                        "\"email\" : \"Arun.s@live.dk\",\n" +
+                        "\"userName\" : \"Arun.s\",\n" +
+                        "\"passWord\" : \"1234\",\n" +
+                        "\"active\" : \"true\"\n" +
+                        "}";
+
+
+                String getResult = null;
+                try {
+                    getResult = serviceConnector.post("http://comida-service.azurewebsites.net/api/user",json);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                System.out.println("result is = "+getResult);
+
+
+                // String postResult = serviceConnector.sendPost("http://comida-service.azurewebsites.net/api/user",json);
+
+                //System.out.println(postResult);
+
+                try {
+                    JSONArray array = new JSONArray(getResult);
+                    System.out.println(array.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                return getResult;
+            }
+
+            protected void onProgressUpdate(String... progress) {
+
+            }
+
+            protected void onPostExecute(String result) {
+                view.setText(result);
+            }
+        }.execute();
+    }
+
+    TextView view;
+
+
 }
