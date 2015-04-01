@@ -1,27 +1,116 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.nutra_o.nutra_o.LoginScreen">
+    android:layout_height="match_parent"
+    tools:context="com.nutra_o.nutra_o.activitys.LoginScreen">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TEST"
-        android:id="@+id/button"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="82dp"
-        android:onClick="testMethod"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="0dp"
+        android:layout_margin="0dp">
+
+
+
+        <WebView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:id="@+id/webView" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:visibility="gone"
+            android:padding="20dp"
+            android:background="#C0000000"
+            android:layout_gravity="center"
+            android:id="@+id/loginView"
+            >
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:text="Enter username"
+                android:layout_marginTop="100dp"
+                android:ems="10"
+                android:textColor="@android:color/white"
+                android:id="@+id/username_editText"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/password_editText"
+                android:textColor="@android:color/white"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="X"
+                android:layout_gravity="right"
+                android:textColor="@android:color/holo_red_light"
+                android:id="@+id/textView"
+                android:onClick="clearLoginView"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="0dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center|bottom"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/container">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="test"
+                android:id="@+id/button_test"
+                android:layout_gravity="center_horizontal"
+                android:onClick="observerTest"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LOGIN"
+                android:width="300dp"
+                android:height="60dp"
+                android:background="@drawable/button_primary"
+                android:id="@+id/button_login"
+                android:onClick="login"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="REGISTER"
+                android:textSize="10dp"
+                android:width="100dp"
+                android:height="30dp"
+                android:background="@drawable/button_blue_dark"
+                android:id="@+id/button2"
+                android:onClick="register"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+
+
 </RelativeLayout>

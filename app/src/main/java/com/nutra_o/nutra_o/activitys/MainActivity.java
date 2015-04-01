@@ -1,5 +1,6 @@
-package com.nutra_o.nutra_o;
+package com.nutra_o.nutra_o.activitys;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -8,47 +9,47 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
 
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
+
+import com.nutra_o.nutra_o.models.ApplicationImpl;
+import com.nutra_o.nutra_o.models.ApplicationModel;
+import com.nutra_o.nutra_o.service.MyAdapter;
+import com.nutra_o.nutra_o.R;
 
 
 public class MainActivity extends ActionBarActivity {
 
     private Toolbar toolbar;
 
-    String TITLES[] = {"Home","Events","Mail","Shop","Travel"};
-    int ICONS[] = {R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher};
+    String TITLES[] = {"Sundhed","Indkøbslister","Opskrifter","Mad lager","Madplaner", "Indstillinger","Logud"};
+    int ICONS[] = {R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher};
 
-    String NAME = "Arun Sivagnanam";
-    String EMAIL = "arun.s@live.dk";
+    String NAME;
+    String EMAIL;
     int PROFILE = R.drawable.ic_launcher;
 
     RecyclerView mRecyclerView;                           // Declaring RecyclerView
     RecyclerView.Adapter mAdapter;                        // Declaring Adapter For Recycler View
     RecyclerView.LayoutManager mLayoutManager;            // Declaring Layout Manager as a linear layout manager
     DrawerLayout Drawer;                                  // Declaring DrawerLayout
-
     ActionBarDrawerToggle mDrawerToggle;                    // Declaring Action Bar Drawer Toggle
+
+    ApplicationImpl application;
+    ApplicationModel model;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toolbar = (Toolbar) findViewById(R.id.tool_bar); // Attaching the layout to the toolbar object
-        setSupportActionBar(toolbar);                   // Setting toolbar as the ActionBar with setSupportActionBar() call
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+
+        application = (ApplicationImpl) getApplicationContext();
+        model = application.getModel();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView); // Assigning the RecyclerView Object to the xml View
 
@@ -108,6 +109,12 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            return true;
+        }
+
+        if(id == R.id.navigate){
+
+            startActivity(new Intent(this,test.class));
             return true;
         }
 
