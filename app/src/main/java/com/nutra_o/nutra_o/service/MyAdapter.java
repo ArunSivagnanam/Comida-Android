@@ -1,14 +1,19 @@
 package com.nutra_o.nutra_o.service;
 
 
+import android.app.Activity;
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nutra_o.nutra_o.R;
+import com.nutra_o.nutra_o.activitys.MainActivity;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
@@ -22,12 +27,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private String name;        //String Resource for header View Name
     private int profile;        //int Resource for header view profile picture
     private String email;       //String Resource for header view email bobo
-
+    private Activity currentAcctivity;
 
     // Creating a ViewHolder which extends the RecyclerView View Holder
     // ViewHolder are used to to store the inflated views in order to recycle them
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         int Holderid;
 
         TextView textView;
@@ -35,18 +40,22 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         ImageView profile;
         TextView Name;
         TextView email;
+        LinearLayout itemRowLayout;
+        Activity currentActivity;
 
-
-        public ViewHolder(View itemView,int ViewType) {                 // Creating ViewHolder Constructor with View and viewType As a parameter
+        public ViewHolder(View itemView, int ViewType, Activity activity) {                 // Creating ViewHolder Constructor with View and viewType As a parameter
             super(itemView);
-
+            currentActivity = activity;
 
             // Here we set the appropriate view in accordance with the the view type as passed when the holder object is created
 
             if(ViewType == TYPE_ITEM) {
                 textView = (TextView) itemView.findViewById(R.id.rowText); // Creating TextView object with the id of textView from item_row.xml
                 imageView = (ImageView) itemView.findViewById(R.id.rowIcon);// Creating ImageView object with the id of ImageView from item_row.xml
-                Holderid = 1;                                               // setting holder id as 1 as the object being populated are of type item row
+                itemRowLayout = (LinearLayout) itemView.findViewById(R.id.itemRowLayout);
+                itemRowLayout.setOnClickListener(this);
+                Holderid = 1;
+                                                               // setting holder id as 1 as the object being populated are of type item row
             }
             else{
 
@@ -56,23 +65,30 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 profile = (ImageView) itemView.findViewById(R.id.circleView);// Creating Image view object from header.xml for profile pic
                 Holderid = 0;                                                // Setting holder id = 0 as the object being populated are of type header view
             }
+
+
         }
 
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(v.getContext(), "STRING MESSAGE", Toast.LENGTH_LONG).show();
+            MainActivity act = (MainActivity) currentActivity;
+            act.onMenuItemSelected(getPosition());
 
+        }
     }
 
 
 
-    public MyAdapter(String Titles[], int Icons[], String Name, String Email, int Profile){ // MyAdapter Constructor with titles and icons parameter
+    public MyAdapter(String Titles[], int Icons[], String Name, String Email, int Profile, Activity activity){ // MyAdapter Constructor with titles and icons parameter
         // titles, icons, name, email, profile pic are passed from the main activity as we
         mNavTitles = Titles;                //have seen earlier
         mIcons = Icons;
         name = Name;
         email = Email;
         profile = Profile;                     //here we assign those passed values to the values we declared here
-        //in adapter
-
-
+        currentAcctivity = activity;
+        // in adapter
 
     }
 
@@ -89,7 +105,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         if (viewType == TYPE_ITEM) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_row,parent,false); //Inflating the layout
 
-            ViewHolder vhItem = new ViewHolder(v,viewType); //Creating ViewHolder and passing the object of type view
+            ViewHolder vhItem = new ViewHolder(v,viewType,currentAcctivity); //Creating ViewHolder and passing the object of type view
 
             return vhItem; // Returning the created object
 
@@ -99,9 +115,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.header,parent,false); //Inflating the layout
 
-            ViewHolder vhHeader = new ViewHolder(v,viewType); //Creating ViewHolder and passing the object of type view
+            ViewHolder vhHeader = new ViewHolder(v,viewType,currentAcctivity); //Creating ViewHolder and passing the object of type view
 
-            return vhHeader; //returning the object created heej
+            return vhHeader; //returning the object created
 
 
         }

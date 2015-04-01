@@ -1,94 +1,65 @@
 package com.nutra_o.nutra_o.activitys;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBarDrawerToggle;
 
-import android.view.View;
-
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-
+import com.nutra_o.nutra_o.fragments.IndkoebslisterFragment;
+import com.nutra_o.nutra_o.fragments.NavigationDrawerFragment;
+import com.nutra_o.nutra_o.fragments.StartFragment;
+import com.nutra_o.nutra_o.fragments.SundhedFragment;
 import com.nutra_o.nutra_o.models.ApplicationImpl;
 import com.nutra_o.nutra_o.models.ApplicationModel;
-import com.nutra_o.nutra_o.service.MyAdapter;
 import com.nutra_o.nutra_o.R;
 
+import java.util.Observable;
+import java.util.Observer;
 
-public class MainActivity extends ActionBarActivity {
+
+public class MainActivity extends ActionBarActivity implements Observer{
+
 
     private Toolbar toolbar;
 
-    String TITLES[] = {"Sundhed","Indkøbslister","Opskrifter","Mad lager","Madplaner", "Indstillinger","Logud"};
-    int ICONS[] = {R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher};
-
-    String NAME;
-    String EMAIL;
-    int PROFILE = R.drawable.ic_launcher;
-
-    RecyclerView mRecyclerView;                           // Declaring RecyclerView
-    RecyclerView.Adapter mAdapter;                        // Declaring Adapter For Recycler View
-    RecyclerView.LayoutManager mLayoutManager;            // Declaring Layout Manager as a linear layout manager
-    DrawerLayout Drawer;                                  // Declaring DrawerLayout
-    ActionBarDrawerToggle mDrawerToggle;                    // Declaring Action Bar Drawer Toggle
+    NavigationDrawerFragment drawerFragment;
+    DrawerLayout Drawer;
 
     ApplicationImpl application;
     ApplicationModel model;
+    FragmentManager fragmentManager;
+    FragmentTransaction fragmentTransaction;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
         application = (ApplicationImpl) getApplicationContext();
         model = application.getModel();
-
-        mRecyclerView = (RecyclerView) findViewById(R.id.RecyclerView); // Assigning the RecyclerView Object to the xml View
-
-        mRecyclerView.setHasFixedSize(true);                            // Letting the system know that the list objects are of fixed size
-
-        mAdapter = new MyAdapter(TITLES,ICONS,NAME,EMAIL,PROFILE);       // Creating the Adapter of MyAdapter class(which we are going to see in a bit)
-        // And passing the titles,icons,header view name, header view email,
-        // and header view profile picture
-
-        mRecyclerView.setAdapter(mAdapter);                              // Setting the adapter to RecyclerView
-
-        mLayoutManager = new LinearLayoutManager(this);                 // Creating a layout Manager
-
-        mRecyclerView.setLayoutManager(mLayoutManager);                 // Setting the layout Manager
-
+        model.addObserver(this);
 
         Drawer = (DrawerLayout) findViewById(R.id.DrawerLayout);        // Drawer object Assigned to the view
-        mDrawerToggle = new ActionBarDrawerToggle(this,Drawer,toolbar,R.string.openDrawer,R.string.closeDrawer){
 
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                // code here will execute once the drawer is opened( As I dont want anything happened whe drawer is
-                // open I am not going to put anything here)
-            }
+        drawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
 
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                super.onDrawerClosed(drawerView);
-                // Code here will execute once drawer is closed
-            }
+        drawerFragment.setUpDrawerFragment(toolbar, Drawer);
 
-
-
-        }; // Drawer Toggle Object Made
-        Drawer.setDrawerListener(mDrawerToggle); // Drawer Listener set to the Drawer toggle
-        mDrawerToggle.syncState();               // Finally we set the drawer toggle sync State
-
-
+        fragmentManager = getFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.root_frag,new StartFragment());
+        fragmentTransaction.commit();
 
     }
 
@@ -120,4 +91,51 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+    // called when model is changed
+    @Override
+    public void update(Observable observable, Object data) {
+
+    }
+
+    // called back from recycler view adapter
+    public void onMenuItemSelected(int menuItem){
+
+        System.out.println("Main activity catched event: "+menuItem);
+
+
+        fragmentTransaction = fragmentManager.beginTransaction();
+
+        Fragment fragment = null;
+
+        if(menuItem == 1){ // sundheds fragment
+
+            fragment = new SundhedFragment();
+
+        }else if (menuItem == 2) { // indkøbslister
+
+            fragment = new IndkoebslisterFragment();
+
+        } else if (menuItem == 3){ // opskrifter
+
+        } else if (menuItem == 4){ // mad lager
+
+        } else if (menuItem == 5){ // madplaner
+
+        } else if (menuItem == 6) { // indstillinger
+
+        } else if (menuItem == 7){ // logud
+
+        }
+
+        if (fragment != null){
+            fragmentTransaction.replace(R.id.root_frag, fragment);
+            fragmentTransaction.commit();
+        }
+
+        Drawer.closeDrawer(Gravity.START);
+
+    }
+
 }
