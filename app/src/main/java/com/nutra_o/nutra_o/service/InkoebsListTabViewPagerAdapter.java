@@ -13,14 +13,14 @@ import com.nutra_o.nutra_o.fragments.tabmenu.InkoebslisterTab2Fragment;
 /**
  * Created by hp1 on 21-01-2015.
  */
-public class ViewPagerAdapter extends FragmentStatePagerAdapter {
+public class InkoebsListTabViewPagerAdapter extends FragmentStatePagerAdapter {
 
     CharSequence Titles[]; // This will Store the Titles of the Tabs which are Going to be passed when ViewPagerAdapter is created
     int NumbOfTabs; // Store the number of tabs, this will also be passed when the ViewPagerAdapter is created
 
 
     // Build a Constructor and assign the passed Values to appropriate values in the class
-    public ViewPagerAdapter(FragmentManager fm,CharSequence mTitles[], int mNumbOfTabsumb) {
+    public InkoebsListTabViewPagerAdapter(FragmentManager fm, CharSequence mTitles[], int mNumbOfTabsumb) {
         super(fm);
 
         this.Titles = mTitles;

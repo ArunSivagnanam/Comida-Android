@@ -1,6 +1,7 @@
 package com.nutra_o.nutra_o.fragments;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
@@ -13,7 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.nutra_o.nutra_o.R;
-import com.nutra_o.nutra_o.service.MyAdapter;
+import com.nutra_o.nutra_o.models.ApplicationImpl;
+import com.nutra_o.nutra_o.service.MainMenuRecycleAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,6 +38,7 @@ public class NavigationDrawerFragment extends android.support.v4.app.Fragment {
     // Declaring DrawerLayout
     ActionBarDrawerToggle mDrawerToggle;                    // Declaring Action Bar Drawer Toggle
 
+
     public NavigationDrawerFragment() {
         // Required empty public constructor
     }
@@ -51,10 +54,14 @@ public class NavigationDrawerFragment extends android.support.v4.app.Fragment {
 
         mRecyclerView.setHasFixedSize(true);                            // Letting the system know that the list objects are of fixed size
 
-        mAdapter = new MyAdapter(TITLES,ICONS,NAME,EMAIL,PROFILE,getActivity());       // Creating the Adapter of MyAdapter class(which we are going to see in a bit)
+        Activity act = getActivity();
+        ApplicationImpl actApplication = ((ApplicationImpl)act.getApplication());
+        NAME = actApplication.getModel().currentUser.FirstName+" "+ actApplication.getModel().currentUser.LastName;
+        EMAIL = actApplication.getModel().currentUser.Email;
+
+        mAdapter = new MainMenuRecycleAdapter(TITLES,ICONS,NAME,EMAIL,PROFILE,act);       // Creating the Adapter of MyAdapter class(which we are going to see in a bit)
         // And passing the titles,icons,header view name, header view email,
         // and header view profile picture
-
         mRecyclerView.setAdapter(mAdapter);                              // Setting the adapter to RecyclerView
 
         mLayoutManager = new LinearLayoutManager(getActivity());                 // Creating a layout Manager

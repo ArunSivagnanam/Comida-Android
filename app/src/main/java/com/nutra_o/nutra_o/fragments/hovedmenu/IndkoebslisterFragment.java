@@ -9,20 +9,30 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.nutra_o.nutra_o.R;
-import com.nutra_o.nutra_o.service.ViewPagerAdapter;
+import com.nutra_o.nutra_o.models.ApplicationImpl;
+import com.nutra_o.nutra_o.models.ApplicationModel;
+import com.nutra_o.nutra_o.models.ShoppingList;
+import com.nutra_o.nutra_o.service.InkoebsListTabViewPagerAdapter;
 import com.nutra_o.nutra_o.tabs.SlidingTabLayout;
+
+import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class IndkoebslisterFragment extends android.support.v4.app.Fragment {
+public class IndkoebslisterFragment extends android.support.v4.app.Fragment implements Observer {
 
     ViewPager pager;
-    ViewPagerAdapter adapter;
+    InkoebsListTabViewPagerAdapter adapter;
     SlidingTabLayout tabs;
 
-    CharSequence Titles[]={"Home","Events"};
-    int Numboftabs =2;
+    CharSequence Titles[]={"Aktive","Ikke købte","Købte"};
+    int Numboftabs =3;
+
+    ApplicationImpl application;
+    ApplicationModel model;
 
     public IndkoebslisterFragment() {
         // Required empty public constructor
@@ -35,7 +45,7 @@ public class IndkoebslisterFragment extends android.support.v4.app.Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_indkoebslister, container, false);
 
-        adapter =  new ViewPagerAdapter(getActivity().getSupportFragmentManager(),Titles,Numboftabs);
+        adapter =  new InkoebsListTabViewPagerAdapter(getActivity().getSupportFragmentManager(),Titles,Numboftabs);
 
         // Assigning ViewPager View and setting the adapter
         pager = (ViewPager) v.findViewById(R.id.pager);
@@ -56,8 +66,29 @@ public class IndkoebslisterFragment extends android.support.v4.app.Fragment {
         // Setting the ViewPager For the SlidingTabsLayout
         tabs.setViewPager(pager);
 
+        application = (ApplicationImpl)getActivity().getApplication();
+        model = application.getModel();
+        model.addObserver(this);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ArrayList<ShoppingList> list =  application.shoppingListAccesor.getAllShoppingList(model.currentUser.ID);
+                model.setShoppingListsList(list);
+            }
+        }).start();
+
         return v;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        model.deleteObserver(this);
+    }
 
+    @Override
+    public void update(Observable observable, Object data) {
+
+    }
 }

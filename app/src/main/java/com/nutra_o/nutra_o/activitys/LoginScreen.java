@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.nutra_o.nutra_o.R;
 import com.nutra_o.nutra_o.models.ApplicationImpl;
 import com.nutra_o.nutra_o.models.ApplicationModel;
+import com.nutra_o.nutra_o.models.Constants;
 import com.nutra_o.nutra_o.models.User;
 
 import java.util.Observable;
@@ -80,11 +81,6 @@ public class LoginScreen extends ActionBarActivity implements Observer {
             final String email = ((EditText)findViewById(R.id.username_editText)).getText().toString();
             final String password = ((EditText)findViewById(R.id.password_editText)).getText().toString();
 
-            // TEMPERARY NO LOGIN
-            Intent i = new Intent(getBaseContext(), MainActivity.class);
-            startActivity(i);
-
-            /*
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -92,7 +88,7 @@ public class LoginScreen extends ActionBarActivity implements Observer {
                     model.setUser(currentUser);
                 }
             }).start();
-            */
+
         }else{
             loginPressed = true;
         }
@@ -143,7 +139,10 @@ public class LoginScreen extends ActionBarActivity implements Observer {
     @Override
     public void update(final Observable observable, final Object data) {
 
-        if( data != null){
+        Constants.Event event =  (Constants.Event) data;
+
+        if( event == Constants.Event.USER_LOADED){
+
             Intent i = new Intent(getBaseContext(), MainActivity.class);
             startActivity(i);
         }else{

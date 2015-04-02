@@ -15,7 +15,7 @@ public class TestServiceConnector {
 
 
         String json = "{\n" +
-                "\"id\": \"1\",\n" +
+                "\"ID\": \"1\",\n" +
                 "\"firstName\" :\"Arukjkjkjn\",\n" +
                 "\"lastName\" : \"Sivagnanam\",\n" +
                 "\"address\" : \"Haraldslundvej\",\n" +
