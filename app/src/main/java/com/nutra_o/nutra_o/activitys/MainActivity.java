@@ -1,10 +1,10 @@
 package com.nutra_o.nutra_o.activitys;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
@@ -12,10 +12,10 @@ import android.view.MenuItem;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 
-import com.nutra_o.nutra_o.fragments.IndkoebslisterFragment;
+import com.nutra_o.nutra_o.fragments.hovedmenu.IndkoebslisterFragment;
 import com.nutra_o.nutra_o.fragments.NavigationDrawerFragment;
-import com.nutra_o.nutra_o.fragments.StartFragment;
-import com.nutra_o.nutra_o.fragments.SundhedFragment;
+import com.nutra_o.nutra_o.fragments.hovedmenu.StartFragment;
+import com.nutra_o.nutra_o.fragments.hovedmenu.SundhedFragment;
 import com.nutra_o.nutra_o.models.ApplicationImpl;
 import com.nutra_o.nutra_o.models.ApplicationModel;
 import com.nutra_o.nutra_o.R;
@@ -45,6 +45,8 @@ public class MainActivity extends ActionBarActivity implements Observer{
 
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
+        toolbar.getBackground().setAlpha(0);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         application = (ApplicationImpl) getApplicationContext();
         model = application.getModel();
@@ -56,11 +58,10 @@ public class MainActivity extends ActionBarActivity implements Observer{
 
         drawerFragment.setUpDrawerFragment(toolbar, Drawer);
 
-        fragmentManager = getFragmentManager();
+        fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.root_frag,new StartFragment());
         fragmentTransaction.commit();
-
     }
 
 

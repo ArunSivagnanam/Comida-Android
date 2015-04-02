@@ -1,4 +1,4 @@
-package com.nutra_o.nutra_o.fragments;
+package com.nutra_o.nutra_o.fragments.hovedmenu;
 
 
 import android.os.Bundle;
@@ -12,10 +12,10 @@ import com.nutra_o.nutra_o.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class IndkoebslisterFragment extends Fragment {
+public class SundhedFragment extends android.support.v4.app.Fragment {
 
 
-    public IndkoebslisterFragment() {
+    public SundhedFragment() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class IndkoebslisterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_indkoebslister, container, false);
+        return inflater.inflate(R.layout.fragment_sundhed, container, false);
     }
 
 

@@ -28,7 +28,7 @@ public class NavigationDrawerFragment extends android.support.v4.app.Fragment {
 
     String NAME;
     String EMAIL;
-    int PROFILE = R.drawable.ic_launcher;
+    int PROFILE = R.drawable.profile;
 
     RecyclerView mRecyclerView;                           // Declaring RecyclerView
     RecyclerView.Adapter mAdapter;                        // Declaring Adapter For Recycler View

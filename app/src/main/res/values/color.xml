@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name ="actionColor">#F44336</color>
-    <color name="colorBlueDark">#ff0095ff</color>
+    <color name="colorPrimary">#00975A</color>
+    <color name="colorPrimaryDark">#056E44</color>
+    <color name ="actionColor">#E76F51</color>
+    <color name="colorBlueDark">#ff264653</color>
+    <color name = "yellow">#E9C46A</color>
+    <color name = "lightOrrange">#F4A261</color>
+
 </resources>
