@@ -61,9 +61,17 @@ public class MainActivity extends ActionBarActivity implements Observer{
         drawerFragment.setUpDrawerFragment(toolbar, Drawer);
 
         fragmentManager = getSupportFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.root_frag,new StartFragment());
-        fragmentTransaction.commit();
+
+
+       if(savedInstanceState == null){
+           fragmentTransaction = fragmentManager.beginTransaction();
+           fragmentTransaction.add(R.id.root_frag,new StartFragment());
+           fragmentTransaction.commit();
+           System.out.println("INFO: START FRAG LOADED");
+       }
+
+        System.out.println(fragmentManager.getBackStackEntryCount());
+
     }
 
     public Fragment getCurrentMainFragment(){
@@ -99,6 +107,14 @@ public class MainActivity extends ActionBarActivity implements Observer{
         return super.onOptionsItemSelected(item);
     }
 
+
+    @Override
+    public boolean onNavigateUp() {
+
+        System.out.println("hellllooo");
+        return super.onNavigateUp();
+
+    }
 
     // called when model is changed
     @Override
@@ -137,7 +153,7 @@ public class MainActivity extends ActionBarActivity implements Observer{
         }
 
         if (fragment != null){
-            fragmentTransaction.replace(R.id.root_frag, fragment);
+            fragmentTransaction.add(R.id.root_frag, fragment).addToBackStack("FRAG");
             fragmentTransaction.commit();
             currentMainFragment = fragment;
         }
@@ -145,5 +161,7 @@ public class MainActivity extends ActionBarActivity implements Observer{
         Drawer.closeDrawer(Gravity.START);
 
     }
+
+
 
 }

@@ -62,8 +62,8 @@ public class IndkoebslisterTab1Fragment extends android.support.v4.app.Fragment 
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         cardList.setLayoutManager(layoutManager);
 
-        return v;
-    }
+    return v;
+}
 
     @Override
     public void onResume() {

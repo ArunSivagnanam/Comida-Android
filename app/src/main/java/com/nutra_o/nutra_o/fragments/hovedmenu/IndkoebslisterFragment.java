@@ -1,15 +1,15 @@
 package com.nutra_o.nutra_o.fragments.hovedmenu;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.nutra_o.nutra_o.activitys.test;
+import com.nutra_o.nutra_o.fragments.tabmenu.ShoppingListEditFragment;
 import com.nutra_o.nutra_o.models.ApplicationImpl;
 import com.nutra_o.nutra_o.models.ApplicationModel;
 import com.nutra_o.nutra_o.models.ShoppingList;
@@ -19,12 +19,6 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import com.nutra_o.nutra_o.R;
-import android.graphics.Outline;
-import android.view.ViewOutlineProvider;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -107,9 +101,16 @@ public class IndkoebslisterFragment extends android.support.v4.app.Fragment impl
     @Override
     public void onClick(View v) {
 
-
+        // haandtere fab click
         if(v == fab){
-            startActivity(new Intent(getActivity(),test.class));
+
+            android.support.v4.app.Fragment f = new ShoppingListEditFragment();
+            FragmentManager manager = getActivity().getSupportFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            transaction.add(R.id.root_frag, f).addToBackStack("FRAG");
+            transaction.commit();
+
 
         }
 

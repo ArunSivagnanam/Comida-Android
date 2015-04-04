@@ -28,9 +28,16 @@
         <activity
             android:name=".activitys.test"
             android:label="@string/title_activity_test" >
-
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".activitys.MainActivity"/>
-
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activitys.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activitys.ShoppingListEditActivity"
+            android:label="@string/title_activity_shopping_list_edit" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activitys.MainActivity" />
         </activity>
     </application>
 
