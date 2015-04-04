@@ -10,8 +10,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@android:color/white"
-        android:id="@+id/layuuu">
+        android:background="@drawable/ripple"
+        android:id="@+id/layuuu"
+        android:clickable="true">
 
         <TextView
             android:id="@+id/txtName"
@@ -66,18 +67,8 @@
             android:textColor="@color/actionColor"
             android:textSize="30dp"
             android:layout_centerVertical="true"
-            android:layout_toStartOf="@+id/textView8" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="x"
-            android:id="@+id/textView8"
-            android:layout_marginEnd="13dp"
-            android:textColor="@android:color/holo_red_dark"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="18dp" />
 
         <TextView
             android:layout_width="wrap_content"

@@ -1,6 +1,7 @@
 package com.nutra_o.nutra_o.fragments.hovedmenu;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -8,24 +9,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.nutra_o.nutra_o.R;
+import com.nutra_o.nutra_o.activitys.test;
 import com.nutra_o.nutra_o.models.ApplicationImpl;
 import com.nutra_o.nutra_o.models.ApplicationModel;
 import com.nutra_o.nutra_o.models.ShoppingList;
-import com.nutra_o.nutra_o.service.InkoebsListTabViewPagerAdapter;
+import com.nutra_o.nutra_o.adapters.InkoebsListTab1ViewPagerAdapter;
 import com.nutra_o.nutra_o.tabs.SlidingTabLayout;
-
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
+import com.nutra_o.nutra_o.R;
+import android.graphics.Outline;
+import android.view.ViewOutlineProvider;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.Button;
+import android.widget.RelativeLayout;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class IndkoebslisterFragment extends android.support.v4.app.Fragment implements Observer {
+public class IndkoebslisterFragment extends android.support.v4.app.Fragment implements Observer, View.OnClickListener {
 
     ViewPager pager;
-    InkoebsListTabViewPagerAdapter adapter;
+    InkoebsListTab1ViewPagerAdapter adapter;
     SlidingTabLayout tabs;
 
     CharSequence Titles[]={"Aktive","Ikke købte","Købte"};
@@ -33,6 +39,8 @@ public class IndkoebslisterFragment extends android.support.v4.app.Fragment impl
 
     ApplicationImpl application;
     ApplicationModel model;
+
+    View fab;
 
     public IndkoebslisterFragment() {
         // Required empty public constructor
@@ -44,8 +52,10 @@ public class IndkoebslisterFragment extends android.support.v4.app.Fragment impl
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_indkoebslister, container, false);
+        fab = v.findViewById(R.id.fab);
+        fab.setOnClickListener(this);
 
-        adapter =  new InkoebsListTabViewPagerAdapter(getActivity().getSupportFragmentManager(),Titles,Numboftabs);
+        adapter =  new InkoebsListTab1ViewPagerAdapter(getActivity().getSupportFragmentManager(),Titles,Numboftabs);
 
         // Assigning ViewPager View and setting the adapter
         pager = (ViewPager) v.findViewById(R.id.pager);
@@ -89,6 +99,19 @@ public class IndkoebslisterFragment extends android.support.v4.app.Fragment impl
 
     @Override
     public void update(Observable observable, Object data) {
+
+    }
+
+
+
+    @Override
+    public void onClick(View v) {
+
+
+        if(v == fab){
+            startActivity(new Intent(getActivity(),test.class));
+
+        }
 
     }
 }

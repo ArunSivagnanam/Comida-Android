@@ -108,7 +108,7 @@
                 android:textSize="10dp"
                 android:width="100dp"
                 android:height="30dp"
-                android:background="@drawable/button_blue_dark"
+                android:background="@drawable/button_primary_dark"
                 android:id="@+id/button2"
                 android:onClick="register"/>
 

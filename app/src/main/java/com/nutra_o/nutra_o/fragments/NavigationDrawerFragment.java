@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 
 import com.nutra_o.nutra_o.R;
 import com.nutra_o.nutra_o.models.ApplicationImpl;
-import com.nutra_o.nutra_o.service.MainMenuRecycleAdapter;
+import com.nutra_o.nutra_o.adapters.MainMenuRecycleAdapter;
 
 /**
  * A simple {@link Fragment} subclass.

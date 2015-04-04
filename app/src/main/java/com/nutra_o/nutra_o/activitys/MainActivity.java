@@ -37,6 +37,8 @@ public class MainActivity extends ActionBarActivity implements Observer{
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
 
+    Fragment currentMainFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,10 @@ public class MainActivity extends ActionBarActivity implements Observer{
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.root_frag,new StartFragment());
         fragmentTransaction.commit();
+    }
+
+    public Fragment getCurrentMainFragment(){
+        return currentMainFragment;
     }
 
 
@@ -133,6 +139,7 @@ public class MainActivity extends ActionBarActivity implements Observer{
         if (fragment != null){
             fragmentTransaction.replace(R.id.root_frag, fragment);
             fragmentTransaction.commit();
+            currentMainFragment = fragment;
         }
 
         Drawer.closeDrawer(Gravity.START);

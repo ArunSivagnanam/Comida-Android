@@ -1,6 +1,7 @@
 package com.nutra_o.nutra_o.fragments.tabmenu;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.annotation.Nullable;
@@ -9,14 +10,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.AbsListView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.nutra_o.nutra_o.R;
+import com.nutra_o.nutra_o.activitys.test;
+import com.nutra_o.nutra_o.fragments.hovedmenu.IndkoebslisterFragment;
 import com.nutra_o.nutra_o.models.ApplicationImpl;
 import com.nutra_o.nutra_o.models.ApplicationModel;
-import com.nutra_o.nutra_o.service.IndkoebslisterCardListRecycleAdapter;
-
-import org.w3c.dom.Text;
+import com.nutra_o.nutra_o.adapters.IndkoebslisterCardListRecycleAdapter;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -28,6 +31,8 @@ public class IndkoebslisterTab1Fragment extends android.support.v4.app.Fragment 
 
     ApplicationImpl application;
     ApplicationModel model;
+
+    IndkoebslisterFragment mainFragment;
 
     RecyclerView cardList;
     LinearLayoutManager layoutManager;
@@ -78,9 +83,19 @@ public class IndkoebslisterTab1Fragment extends android.support.v4.app.Fragment 
         cardList.setAdapter(adapter);
     }
 
+    public void onCardClick(View v){
+
+        startActivity(new Intent(getActivity(), test.class));
+
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
         model.deleteObserver(this);
     }
+
+    // Scroll events
+
+
 }

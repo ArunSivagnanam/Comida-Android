@@ -1,4 +1,4 @@
-package com.nutra_o.nutra_o.service;
+package com.nutra_o.nutra_o.adapters;
 
 
 import android.app.Activity;

@@ -143,11 +143,13 @@ public class LoginScreen extends ActionBarActivity implements Observer {
 
         if( event == Constants.Event.USER_LOADED){
 
-            Intent i = new Intent(getBaseContext(), MainActivity.class);
-            startActivity(i);
-        }else{
-            Toast.makeText(getApplicationContext(), "Wrong email or password",
-                    Toast.LENGTH_LONG).show();
+            if(model.currentUser != null){
+                Intent i = new Intent(getBaseContext(), MainActivity.class);
+                startActivity(i);
+            }else {
+                Toast.makeText(getApplicationContext(), "Wrong email or password",
+                        Toast.LENGTH_LONG).show();
+            }
         }
 
     }

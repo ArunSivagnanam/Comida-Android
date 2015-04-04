@@ -1,20 +1,16 @@
-package com.nutra_o.nutra_o.service;
+package com.nutra_o.nutra_o.adapters;
 
 
-import android.app.Activity;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.nutra_o.nutra_o.activitys.MainActivity;
+import com.nutra_o.nutra_o.fragments.hovedmenu.IndkoebslisterFragment;
+import com.nutra_o.nutra_o.fragments.tabmenu.IndkoebslisterTab1Fragment;
 import com.nutra_o.nutra_o.models.ShoppingList;
 import com.nutra_o.nutra_o.R;
 
@@ -22,13 +18,13 @@ import java.util.ArrayList;
 
 public class IndkoebslisterCardListRecycleAdapter extends RecyclerView.Adapter<IndkoebslisterCardListRecycleAdapter.ViewHolder> {
 
-    private Fragment currentFragment;
+    private IndkoebslisterTab1Fragment currentFragment;
     private ArrayList<ShoppingList> shoppingLists;
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        Fragment currentFragment;
+        IndkoebslisterTab1Fragment currentFragment;
         TextView vName;
         TextView creationData;
         TextView duoDate;
@@ -36,7 +32,7 @@ public class IndkoebslisterCardListRecycleAdapter extends RecyclerView.Adapter<I
         RelativeLayout layout;
 
 
-        public ViewHolder(View itemView, Fragment currentFragment) {
+        public ViewHolder(View itemView, IndkoebslisterTab1Fragment currentFragment) {
             super(itemView);
             this.currentFragment = currentFragment;
             vName = (TextView) itemView.findViewById(R.id.txtName);
@@ -53,10 +49,12 @@ public class IndkoebslisterCardListRecycleAdapter extends RecyclerView.Adapter<I
         public void onClick(View v) {
 
             // call method on menu fragment
+            currentFragment.onCardClick(v);
+
         }
     }
 
-    public IndkoebslisterCardListRecycleAdapter(ArrayList<ShoppingList> shoppingLists, Fragment fragment){
+    public IndkoebslisterCardListRecycleAdapter(ArrayList<ShoppingList> shoppingLists, IndkoebslisterTab1Fragment fragment){
 
         currentFragment = fragment;
         this.shoppingLists = shoppingLists;

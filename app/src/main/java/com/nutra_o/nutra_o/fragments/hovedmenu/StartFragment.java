@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.nutra_o.nutra_o.R;
-import com.nutra_o.nutra_o.service.InkoebsListTabViewPagerAdapter;
+import com.nutra_o.nutra_o.adapters.InkoebsListTab1ViewPagerAdapter;
 import com.nutra_o.nutra_o.tabs.SlidingTabLayout;
 
 /**
@@ -19,7 +19,7 @@ public class StartFragment extends android.support.v4.app.Fragment {
 
 
     ViewPager pager;
-    InkoebsListTabViewPagerAdapter adapter;
+    InkoebsListTab1ViewPagerAdapter adapter;
     SlidingTabLayout tabs;
 
     CharSequence Titles[]={"Home","Events"};
