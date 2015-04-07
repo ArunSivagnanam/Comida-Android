@@ -4,4 +4,9 @@
     tools:context="com.nutra_o.nutra_o.activitys.IndkoebsListEditActivity">
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
+
+    <item android:id="@+id/save" android:title="Save"
+        android:orderInCategory="200" app:showAsAction="always"
+        android:icon="@drawable/ic_launcher"/>
+
 </menu>

@@ -1,7 +1,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.nutra_o.nutra_o.activitys.IndkoebsListEditActivity">
+    tools:context="com.nutra_o.nutra_o.activitys.IndkoebsListEditActivity"
+    android:background="@android:color/white">
 
     // toolbar
     <include
@@ -10,20 +11,22 @@
 
     </include>
 
-    // main background
-    <LinearLayout
+    // main settings
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@android:color/white">
 
         // blue contents
+
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="208dp"
+            android:layout_height="285dp"
             android:background="@color/colorBlueDark"
             android:orientation="vertical"
-            android:elevation="4dp">
-
+            android:elevation="4dp"
+            android:id="@+id/blueBox">
 
 
             <EditText
@@ -40,45 +43,6 @@
                 android:layout_marginTop="80dp"
                 />
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:weightSum="1"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp">
-
-                <AutoCompleteTextView
-                    android:layout_width="242dp"
-                    android:layout_height="42dp"
-                    android:id="@+id/add_item"
-                    android:background="@android:color/white"
-                    android:hint="   Tilføj vare"
-                    android:elevation="4dp"
-                    android:ems="10"
-                    />
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/addbutton"
-                    android:clickable="true"
-                    android:layout_marginLeft="8dp"
-                    android:elevation="2dp"
-                    android:id="@+id/clearButton"
-                    android:layout_gravity="center"/>
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/fab"
-                    android:clickable="true"
-                    android:layout_marginLeft="7dp"
-                    android:elevation="2dp"
-                    android:id="@+id/addButton"
-                    android:layout_gravity="center"/>
-            </LinearLayout>
-
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -87,16 +51,160 @@
                 android:textColor="@android:color/white"
                 android:hint="Deadline"
                 android:backgroundTint="@android:color/white"
-                android:textSize="10dp"
+                android:textSize="12dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
 
 
                 />
 
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:id="@+id/add_item"
+                    android:background="@android:color/white"
+                    android:hint="   Tilføj vare"
+                    android:elevation="4dp"
+                    android:ems="10"
+                    />
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Amount : "
+                    android:textColor="@android:color/white"
+                    android:id="@+id/textView7"
+                    android:textSize="12dp"/>
+
+                <EditText
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:ems="10"
+                    android:id="@+id/amountData"
+                    android:backgroundTint="@android:color/white"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Unit : "
+                    android:textColor="@android:color/white"
+                    android:id="@+id/textView12"
+                    android:textSize="12dp"/>
+
+                <Spinner
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:id="@+id/spinner"
+
+
+                    />
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Basal vare"
+                    android:id="@+id/checkBox"
+                    android:textColor="@android:color/white"/>
+            </LinearLayout>
+
+
+
         </LinearLayout>
 
-    </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="5dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:gravity="center"
+                android:layout_marginTop="260dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/addbutton"
+                    android:clickable="true"
+                    android:elevation="0dp"
+                    android:id="@+id/clearButton"
+                    android:onClick="addFoodItemToShoppingList"
+                    android:layout_marginRight="20dp"
+                    android:layout_alignTop="@+id/addButton"
+                    />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/fab"
+                    android:clickable="true"
+                    android:layout_marginLeft="7dp"
+                    android:elevation="0dp"
+                    android:id="@+id/addButton"
+                    android:onClick="clearEditText"
+
+
+                     />
+
+                </LinearLayout>
+
+
+
+            </RelativeLayout>
+
+
+
+
+    </FrameLayout>
+
+    // list view
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/itemList"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:fadingEdgeLength="100dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="286dp">
+        </ListView>
+
+        </RelativeLayout>
+
+
 
 
 </FrameLayout>

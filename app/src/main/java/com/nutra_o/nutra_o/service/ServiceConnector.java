@@ -61,6 +61,10 @@ public class ServiceConnector {
         wr.close();
 
         int responseCode = con.getResponseCode();
+        if(responseCode != 200){
+            System.out.println("ERROR IN HTTP REQUEST!!");
+            return null;
+        }
         System.out.println("\nSending 'POST' request to URL : " + url);
         System.out.println("Response Code : " + responseCode);
 

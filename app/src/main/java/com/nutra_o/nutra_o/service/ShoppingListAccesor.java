@@ -42,6 +42,28 @@ public class ShoppingListAccesor {
         return null;
     }
 
+    public boolean postNewShoppingList(ShoppingList l){
+
+        String response;
+        Gson gson = new Gson();
+        String jsonBody = gson.toJson(l);
+
+        try {
+
+            response = serviceConnector.post(Constants.addShoppingListUrl(),jsonBody);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        if (response != null){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
 
 
