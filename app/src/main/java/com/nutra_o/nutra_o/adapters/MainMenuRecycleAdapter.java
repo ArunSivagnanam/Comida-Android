@@ -71,7 +71,7 @@ public class MainMenuRecycleAdapter extends RecyclerView.Adapter<MainMenuRecycle
         public void onClick(View v) {
             Toast.makeText(v.getContext(), "STRING MESSAGE", Toast.LENGTH_LONG).show();
             MainActivity act = (MainActivity) currentActivity;
-            act.onMenuItemSelected(getPosition());
+            act.loadMenuFragment(getPosition());
 
         }
     }

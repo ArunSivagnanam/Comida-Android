@@ -128,13 +128,12 @@ public class LoginScreen extends ActionBarActivity implements Observer {
         webview.getSettings().setJavaScriptEnabled(true);
         webview.loadUrl("http://onceaunicorn.com/");
         webview.setWebViewClient(new WebViewClient());
-        test = (Button) findViewById(R.id.button_test);
+
     }
 
     LinearLayout loginView;
     WebView webview;
     Button loginButton;
-    Button test;
 
     @Override
     public void update(final Observable observable, final Object data) {
@@ -147,7 +146,7 @@ public class LoginScreen extends ActionBarActivity implements Observer {
                 Intent i = new Intent(getBaseContext(), MainActivity.class);
                 startActivity(i);
             }else {
-                Toast.makeText(getApplicationContext(), "Wrong email or password",
+                Toast.makeText(getApplicationContext(), "Wrong email or password \nUse test user Arun.s@live.dk, 1234",
                         Toast.LENGTH_LONG).show();
             }
         }

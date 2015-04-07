@@ -1,11 +1,13 @@
 package com.nutra_o.nutra_o.activitys;
 
+import android.content.Intent;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.nutra_o.nutra_o.R;
 
@@ -21,8 +23,20 @@ public class test extends ActionBarActivity {
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getBaseContext(),MainActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("MenuItem",2);
+                i.putExtras(bundle);
+                startActivity(i);
+            }
+        });
     }
 
 
@@ -44,11 +58,8 @@ public class test extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
-        if(id == R.id.home){
-            NavUtils.navigateUpFromSameTask(this);
-        }
-
         return super.onOptionsItemSelected(item);
     }
+
+    
 }

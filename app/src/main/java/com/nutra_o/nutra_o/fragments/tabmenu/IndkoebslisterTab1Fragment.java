@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.nutra_o.nutra_o.R;
+import com.nutra_o.nutra_o.activitys.IndkoebsListEditActivity;
 import com.nutra_o.nutra_o.activitys.test;
 import com.nutra_o.nutra_o.fragments.hovedmenu.IndkoebslisterFragment;
 import com.nutra_o.nutra_o.models.ApplicationImpl;
@@ -85,7 +86,7 @@ public class IndkoebslisterTab1Fragment extends android.support.v4.app.Fragment 
 
     public void onCardClick(View v){
 
-        startActivity(new Intent(getActivity(), test.class));
+        startActivity(new Intent(getActivity(), IndkoebsListEditActivity.class));
 
     }
 

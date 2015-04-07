@@ -1,0 +1,102 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.nutra_o.nutra_o.activitys.IndkoebsListEditActivity">
+
+    // toolbar
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/app_bar">
+
+    </include>
+
+    // main background
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+        // blue contents
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="208dp"
+            android:background="@color/colorBlueDark"
+            android:orientation="vertical"
+            android:elevation="4dp">
+
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/navnoverskrift"
+                android:textColorHint="@android:color/white"
+                android:textColor="@android:color/white"
+                android:hint="Tittel"
+                android:backgroundTint="@android:color/white"
+                android:textSize="18dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="80dp"
+                />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <AutoCompleteTextView
+                    android:layout_width="242dp"
+                    android:layout_height="42dp"
+                    android:id="@+id/add_item"
+                    android:background="@android:color/white"
+                    android:hint="   Tilføj vare"
+                    android:elevation="4dp"
+                    android:ems="10"
+                    />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/addbutton"
+                    android:clickable="true"
+                    android:layout_marginLeft="8dp"
+                    android:elevation="2dp"
+                    android:id="@+id/clearButton"
+                    android:layout_gravity="center"/>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/fab"
+                    android:clickable="true"
+                    android:layout_marginLeft="7dp"
+                    android:elevation="2dp"
+                    android:id="@+id/addButton"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/deadline"
+                android:textColorHint="@android:color/white"
+                android:textColor="@android:color/white"
+                android:hint="Deadline"
+                android:backgroundTint="@android:color/white"
+                android:textSize="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+
+
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</FrameLayout>

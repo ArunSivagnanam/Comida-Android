@@ -62,16 +62,14 @@ public class MainActivity extends ActionBarActivity implements Observer{
 
         fragmentManager = getSupportFragmentManager();
 
-
        if(savedInstanceState == null){
-           fragmentTransaction = fragmentManager.beginTransaction();
-           fragmentTransaction.add(R.id.root_frag,new StartFragment());
-           fragmentTransaction.commit();
-           System.out.println("INFO: START FRAG LOADED");
+           loadMenuFragment(0);
        }
-
-        System.out.println(fragmentManager.getBackStackEntryCount());
-
+       if(getIntent().getExtras()!= null){ // can specify witch menu fragment is shown when activity is called from another activity
+           Bundle bundle = getIntent().getExtras();
+           int menuNr = (Integer) bundle.getInt("MenuItem");
+           loadMenuFragment(menuNr);
+         }
     }
 
     public Fragment getCurrentMainFragment(){
@@ -123,7 +121,7 @@ public class MainActivity extends ActionBarActivity implements Observer{
     }
 
     // called back from recycler view adapter
-    public void onMenuItemSelected(int menuItem){
+    public void loadMenuFragment(int menuItem){
 
         System.out.println("Main activity catched event: "+menuItem);
 
@@ -132,7 +130,11 @@ public class MainActivity extends ActionBarActivity implements Observer{
 
         Fragment fragment = null;
 
-        if(menuItem == 1){ // sundheds fragment
+        if(menuItem == 0){ // sundheds fragment
+
+            fragment = new StartFragment();
+
+        }else if(menuItem == 1){ // sundheds fragment
 
             fragment = new SundhedFragment();
 

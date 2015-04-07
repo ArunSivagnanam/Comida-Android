@@ -1,15 +1,14 @@
 package com.nutra_o.nutra_o.fragments.hovedmenu;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.nutra_o.nutra_o.fragments.tabmenu.ShoppingListEditFragment;
+import com.nutra_o.nutra_o.activitys.IndkoebsListEditActivity;
 import com.nutra_o.nutra_o.models.ApplicationImpl;
 import com.nutra_o.nutra_o.models.ApplicationModel;
 import com.nutra_o.nutra_o.models.ShoppingList;
@@ -103,15 +102,7 @@ public class IndkoebslisterFragment extends android.support.v4.app.Fragment impl
 
         // haandtere fab click
         if(v == fab){
-
-            android.support.v4.app.Fragment f = new ShoppingListEditFragment();
-            FragmentManager manager = getActivity().getSupportFragmentManager();
-            FragmentTransaction transaction = manager.beginTransaction();
-            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-            transaction.add(R.id.root_frag, f).addToBackStack("FRAG");
-            transaction.commit();
-
-
+            startActivity(new Intent(getActivity(), IndkoebsListEditActivity.class));
         }
 
     }
