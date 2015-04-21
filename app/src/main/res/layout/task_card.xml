@@ -1,0 +1,270 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    android:layout_marginBottom="2dp"
+    android:layout_marginTop="2dp"
+    android:background="@color/lysGraa"
+    android:animateLayoutChanges="true"
+
+
+   >
+
+        // expander colapsed height = 60dp / 200dp
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:layout_margin="1dp"
+            android:id="@+id/expander">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/space"/>
+
+            // deadline
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/deadlineLayout"
+                android:clickable="true"
+                android:background="@drawable/ripple">
+
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageButton"
+                    android:clickable="true"
+                    android:src="@drawable/ic_action_deadline"
+                    android:background="@android:color/transparent"
+                    android:layout_marginLeft="30dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_marginLeft="10dp"
+                    android:text="13-03-2015"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/deadlineText"
+                    android:textSize="15dp"/>
+            </LinearLayout>
+
+            // reminder layout
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/reminderLayout"
+                android:clickable="true"
+                android:background="@drawable/ripple"
+
+                >
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/reminder_imageButton"
+                    android:clickable="true"
+                    android:src="@drawable/ic_action_reminder"
+                    android:background="@android:color/transparent"
+                    android:layout_marginLeft="30dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_marginLeft="10dp"
+                    android:text="13-03-2015"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/remindertext"
+                    android:textSize="15dp"/>
+
+            </LinearLayout>
+
+            // category layout
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/categoryLayout"
+                android:clickable="true"
+                android:background="@drawable/ripple"
+
+                >
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/category_imageButton"
+                    android:clickable="true"
+                    android:src="@drawable/ic_action_cat"
+                    android:background="@android:color/transparent"
+                    android:layout_marginLeft="30dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_marginLeft="10dp"
+                    android:text="13-03-2015"
+                    android:textSize="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/categoryText" />
+
+            </LinearLayout>
+
+            // progress layout
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressLayout"
+
+                >
+
+                <SeekBar
+                    android:layout_width="311dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/seekBar2"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="30dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="50%"
+                        android:id="@+id/procentageCompleted"
+                        android:textSize="12dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_gravity="left" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="1d: 4h : 10m"
+                        android:textSize="12dp"
+                        android:id="@+id/estimationText"
+                        android:gravity="right"
+                        android:layout_marginRight="20dp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Edit"
+                    android:id="@+id/textView5"
+                    android:layout_gravity="right"
+                    android:textSize="15dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginLeft="35dp"
+                    android:textColor="@color/lysblaa"/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Remove"
+                    android:gravity="right"
+                    android:id="@+id/remove"
+                    android:layout_gravity="left"
+                    android:textSize="15dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginRight="20dp"
+                    android:textColor="@android:color/holo_red_dark"/>
+
+                </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+        // front
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/handle"
+            android:orientation="horizontal"
+            android:background="@drawable/ripple"
+            android:layout_margin="1dp"
+            android:clickable="true"
+
+            >
+
+            // menu text line
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+
+
+                <TextView
+                    android:id="@+id/taskName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Lasagne"
+                    android:gravity="center_vertical"
+                    android:textSize="20dp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="35dp"/>
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginLeft="10dp"
+        android:layout_width="15dp"
+        android:layout_height="match_parent"
+        android:background="@color/actionColor"
+        android:id="@+id/corlorPanel">
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="20dp"
+        android:textColor="@android:color/black"
+        android:layout_marginRight="20dp"
+        android:text="#3"
+        android:id="@+id/priorety"
+        android:layout_weight="0.30"
+        android:layout_gravity="right|top" />
+
+
+</FrameLayout>
