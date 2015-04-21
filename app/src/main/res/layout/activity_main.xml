@@ -42,7 +42,7 @@
             android:layout_height="match_parent"
             app:layout="@layout/fragment_navigation_drawer"
             android:layout_gravity = "start"
-            android:name="com.nutra_o.nutra_o.fragments.NavigationDrawerFragment"
+            android:name="com.nutra_o.nutra_o.mainMenu.NavigationDrawerFragment"
             tools:layout="@layout/fragment_navigation_drawer">
 
         </fragment>

@@ -2,16 +2,13 @@ package com.nutra_o.nutra_o.service;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 import com.nutra_o.nutra_o.models.Constants;
-import com.nutra_o.nutra_o.models.ShoppingList;
 import com.nutra_o.nutra_o.models.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Created by ars on 19-03-2015.

@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ff009769</color>
-    <color name="colorPrimaryDark">#056E44</color>
+    <color name="colorPrimary">#ff264653</color>
+    <color name="colorPrimaryDark">#ff203340</color>
     <color name ="actionColor">#E76F51</color>
     <color name="colorBlueDark">#ff264653</color>
     <color name = "yellow">#E9C46A</color>
     <color name = "lightOrrange">#F4A261</color>
+
+    // categorie colors test
+
+    <color name = "cyan">#ff46f4da</color>
+    <color name = "toes">#fff45596</color>
+    <color name = "lysblaa">#ff0bc0f4</color>
+    <color name = "lysgroen">#ff009769</color>
+    <color name = "lysGraa">#ffe2e2e2</color>
 
 </resources>

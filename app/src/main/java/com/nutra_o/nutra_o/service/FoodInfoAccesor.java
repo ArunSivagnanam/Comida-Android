@@ -4,8 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.nutra_o.nutra_o.models.Constants;
-import com.nutra_o.nutra_o.models.FoodInfo;
-import com.nutra_o.nutra_o.models.ShoppingList;
+import com.nutra_o.nutra_o.test.FoodInfo;
 
 import java.io.IOException;
 import java.util.ArrayList;

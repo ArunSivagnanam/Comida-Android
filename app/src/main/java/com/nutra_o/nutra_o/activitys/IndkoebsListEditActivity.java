@@ -21,13 +21,12 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.nutra_o.nutra_o.R;
-import com.nutra_o.nutra_o.adapters.ItemAutoCompleteAdapter;
+import com.nutra_o.nutra_o.test.ItemAutoCompleteAdapter;
 import com.nutra_o.nutra_o.models.ApplicationImpl;
 import com.nutra_o.nutra_o.models.ApplicationModel;
-import com.nutra_o.nutra_o.models.FoodInfo;
-import com.nutra_o.nutra_o.models.ShoppingList;
-import com.nutra_o.nutra_o.models.ShoppingListItem;
-import com.nutra_o.nutra_o.models.User;
+import com.nutra_o.nutra_o.test.FoodInfo;
+import com.nutra_o.nutra_o.test.ShoppingList;
+import com.nutra_o.nutra_o.test.ShoppingListItem;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;

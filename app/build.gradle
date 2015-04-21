@@ -29,4 +29,6 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:21.0.+'
     compile 'com.google.code.gson:gson:2.3'
     compile 'com.github.ksoichiro:android-observablescrollview:1.5.0'
+    compile 'com.github.QuadFlask:colorpicker:0.0.8'
+
 }

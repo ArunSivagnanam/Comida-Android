@@ -3,6 +3,6 @@
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
     android:color="@android:color/white"> <!-- ripple color -->
 
-    <item android:drawable="@color/colorBlueDark"/> <!-- normal color -->
+    <item android:drawable="@color/actionColor"/> <!-- normal color -->
 
 </ripple>

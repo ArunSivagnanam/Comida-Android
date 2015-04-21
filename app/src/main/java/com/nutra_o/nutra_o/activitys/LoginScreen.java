@@ -84,7 +84,8 @@ public class LoginScreen extends ActionBarActivity implements Observer {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    User currentUser =  application.authenticator.authenticate(email,password);
+                    User currentUser =  new User(3, "Arun", "Sivagnanam", "Haraldslindvej", "Arun.s@live.dk", "Arun.s", "1234", true, 1);
+                    //User currentUser =  application.authenticator.authenticate(email,password);
                     model.setUser(currentUser);
                 }
             }).start();
@@ -125,9 +126,10 @@ public class LoginScreen extends ActionBarActivity implements Observer {
         loginView = (LinearLayout)findViewById(R.id.loginView);
         loginButton = (Button) findViewById(R.id.button_login);
         webview =  (WebView)findViewById(R.id.webView);
-        webview.getSettings().setJavaScriptEnabled(true);
-        webview.loadUrl("http://onceaunicorn.com/");
         webview.setWebViewClient(new WebViewClient());
+        webview.getSettings().setJavaScriptEnabled(true);
+        webview.loadUrl("http://planpenny.com/");
+
 
     }
 

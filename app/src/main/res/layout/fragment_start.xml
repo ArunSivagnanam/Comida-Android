@@ -1,7 +1,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.nutra_o.nutra_o.fragments.hovedmenu.StartFragment"
+    tools:context="com.nutra_o.nutra_o.subMenu.start.StartFragment"
     android:background="@android:color/white">
 
 

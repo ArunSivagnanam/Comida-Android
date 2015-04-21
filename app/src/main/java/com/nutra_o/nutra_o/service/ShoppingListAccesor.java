@@ -3,10 +3,7 @@ package com.nutra_o.nutra_o.service;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.nutra_o.nutra_o.models.Constants;
-import com.nutra_o.nutra_o.models.ShoppingList;
-
-import org.json.JSONArray;
-import org.json.JSONException;
+import com.nutra_o.nutra_o.test.ShoppingList;
 
 import java.io.IOException;
 import java.util.ArrayList;

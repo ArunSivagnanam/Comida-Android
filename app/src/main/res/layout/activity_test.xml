@@ -17,6 +17,28 @@
 
         <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBar"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="color test"
+            android:id="@+id/button"
+            android:layout_gravity="center_horizontal"
+            android:onClick="testClick"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dialog"
+            android:id="@+id/button4"
+            android:layout_gravity="center_horizontal"
+            android:onClick="dialogClick"/>
     </LinearLayout>
 
 </RelativeLayout>

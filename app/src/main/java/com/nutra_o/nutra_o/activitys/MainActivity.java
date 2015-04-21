@@ -12,10 +12,10 @@ import android.view.MenuItem;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 
-import com.nutra_o.nutra_o.fragments.hovedmenu.IndkoebslisterFragment;
-import com.nutra_o.nutra_o.fragments.NavigationDrawerFragment;
-import com.nutra_o.nutra_o.fragments.hovedmenu.StartFragment;
-import com.nutra_o.nutra_o.fragments.hovedmenu.SundhedFragment;
+import com.nutra_o.nutra_o.subMenu.categories.CategoriesFragment;
+import com.nutra_o.nutra_o.mainMenu.NavigationDrawerFragment;
+import com.nutra_o.nutra_o.subMenu.start.StartFragment;
+import com.nutra_o.nutra_o.subMenu.tasks.TasksFragment;
 import com.nutra_o.nutra_o.models.ApplicationImpl;
 import com.nutra_o.nutra_o.models.ApplicationModel;
 import com.nutra_o.nutra_o.R;
@@ -130,27 +130,29 @@ public class MainActivity extends ActionBarActivity implements Observer{
 
         Fragment fragment = null;
 
-        if(menuItem == 0){ // sundheds fragment
+        if(menuItem == 0){ // default
 
             fragment = new StartFragment();
 
-        }else if(menuItem == 1){ // sundheds fragment
+        }else if(menuItem == 1){ // Tasks
 
-            fragment = new SundhedFragment();
+            fragment = new TasksFragment();
 
-        }else if (menuItem == 2) { // indkøbslister
+        }else if (menuItem == 2) { // Projects
 
-            fragment = new IndkoebslisterFragment();
 
-        } else if (menuItem == 3){ // opskrifter
 
-        } else if (menuItem == 4){ // mad lager
+        } else if (menuItem == 3){ // Calender
 
-        } else if (menuItem == 5){ // madplaner
+        } else if (menuItem == 4){ // Clip board
 
-        } else if (menuItem == 6) { // indstillinger
+        } else if (menuItem == 5){ // Categories
 
-        } else if (menuItem == 7){ // logud
+            fragment = new CategoriesFragment();
+
+        } else if (menuItem == 6) { // Settings
+
+        } else if (menuItem == 7){ // Log out
 
         }
 
