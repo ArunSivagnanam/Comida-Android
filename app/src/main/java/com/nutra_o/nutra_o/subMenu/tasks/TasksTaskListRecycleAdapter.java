@@ -219,7 +219,7 @@ public class TasksTaskListRecycleAdapter extends RecyclerView.Adapter<TasksTaskL
     }
 
 
-    // TODO flyt alle picker objecterne in i view holder r
+    // TODO flyt alle picker objecterne in i view holder r h
 
     public void setUpCategoryPicter(final TextView dialogView, LinearLayout dialogLinearLayout, final Task t, final RelativeLayout colorPanel){
 
