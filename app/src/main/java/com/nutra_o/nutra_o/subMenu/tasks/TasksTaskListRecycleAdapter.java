@@ -141,7 +141,7 @@ public class TasksTaskListRecycleAdapter extends RecyclerView.Adapter<TasksTaskL
 
     }
 
-    // ligger indjoebslist model oplysninger i viewholder
+    // ligger indjoebslist model oplysninger i viewholder dh
     @Override
     public void onBindViewHolder(final TasksTaskListRecycleAdapter.ViewHolder holder, int position) {
 
@@ -219,7 +219,7 @@ public class TasksTaskListRecycleAdapter extends RecyclerView.Adapter<TasksTaskL
     }
 
 
-    // TODO se om der kan ryddes op, men hver view holders categori text er nok nødt til at have egen dialog, da dialogen skal ændre specifikke view holders
+    // TODO flyt alle picker objecterne in i view holder
 
     public void setUpCategoryPicter(final TextView dialogView, LinearLayout dialogLinearLayout, final Task t, final RelativeLayout colorPanel){
 
@@ -286,6 +286,8 @@ public class TasksTaskListRecycleAdapter extends RecyclerView.Adapter<TasksTaskL
 
     }
 
+    // TODO flyt alle picker objecterne in i view holder
+
     public void setUpDeadLinePickerDate(final TextView deadLineView, LinearLayout linearLayout, final Task t){
 
         final SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
@@ -324,6 +326,8 @@ public class TasksTaskListRecycleAdapter extends RecyclerView.Adapter<TasksTaskL
             }
         });
     }
+
+    // TODO flyt alle picker objecterne in i view holder
 
     public void setUpReminderPickerDate(final TextView reminderView, LinearLayout linearLayout, final Task t){
 
