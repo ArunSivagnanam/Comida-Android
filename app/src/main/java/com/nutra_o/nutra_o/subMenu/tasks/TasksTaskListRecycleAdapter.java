@@ -5,9 +5,11 @@ import android.animation.ValueAnimator;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.RippleDrawable;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +23,9 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.google.gson.Gson;
 import com.nutra_o.nutra_o.R;
+import com.nutra_o.nutra_o.activitys.TaskActivity;
 import com.nutra_o.nutra_o.models.Category;
 import com.nutra_o.nutra_o.models.Task;
 
@@ -58,6 +62,9 @@ public class TasksTaskListRecycleAdapter extends RecyclerView.Adapter<TasksTaskL
         TextView procentageCompleted;
         SeekBar seekBar;
 
+        TextView editTask;
+        TextView removeTask;
+
         int mOriginalHeight = 0;
         boolean mIsViewExpanded = false;
         double expandingHeight = 3;
@@ -88,6 +95,8 @@ public class TasksTaskListRecycleAdapter extends RecyclerView.Adapter<TasksTaskL
             estimationText = (TextView) itemView.findViewById(R.id.estimationText);
             procentageCompleted = (TextView) itemView.findViewById(R.id.procentageCompleted);
             seekBar = (SeekBar) itemView.findViewById(R.id.seekBar2);
+            editTask = (TextView) itemView.findViewById(R.id.editTaskButton);
+            removeTask = (TextView) itemView.findViewById(R.id.removeTaskButton);
 
             dialog = new Dialog(categoryText.getContext());
             dialog.setContentView(R.layout.category_dialog);
@@ -223,6 +232,29 @@ public class TasksTaskListRecycleAdapter extends RecyclerView.Adapter<TasksTaskL
 
         holder.priorety.setText("#"+t.priorety);
 
+        setUpEditButton(holder.editTask,t);
+
+    }
+
+    public void setUpEditButton(TextView view, final Task task){
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // add the task in bundle
+                Intent i = new Intent(currentFragment.getActivity(),TaskActivity.class);
+                Bundle bundle = new Bundle();
+
+                Gson gson = new Gson();
+                String jasonTask = gson.toJson(task);
+
+                bundle.putString("TASK",jasonTask);
+                i.putExtras(bundle);
+                currentFragment.startActivity(i);
+
+            }
+        });
     }
 
 

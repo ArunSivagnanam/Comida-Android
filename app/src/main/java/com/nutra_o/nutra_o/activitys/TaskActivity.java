@@ -9,6 +9,7 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.RippleDrawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,14 +23,19 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.nutra_o.nutra_o.R;
 import com.nutra_o.nutra_o.models.ApplicationImpl;
 import com.nutra_o.nutra_o.models.ApplicationModel;
 import com.nutra_o.nutra_o.models.Category;
 import com.nutra_o.nutra_o.models.Task;
+import com.nutra_o.nutra_o.test.ShoppingList;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -47,9 +53,11 @@ public class TaskActivity extends ActionBarActivity {
 
     Dialog dialog;
 
-    Category chosenCategory = new Category();
+    Category chosenCategory = new Category(); // just place holder
 
+    private Toolbar toolbar;
 
+    boolean updateMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,14 +69,119 @@ public class TaskActivity extends ActionBarActivity {
         application = (ApplicationImpl) getApplicationContext();
         model = application.getModel();
 
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getBaseContext(), MainActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("SUB_MENU", 1);
+                i.putExtras(bundle);
+                startActivity(i);
+            }
+        });
+
         setUpCategoryPicter();
         setUpDeadLinePickerDate();
         setUpReminderPickerDate();
         setStartDatePickerDate();
         setUpEstimate();
 
+        updateMode = false;
+
+        if(getIntent().getExtras()!= null){ // can specify witch menu fragment is shown when activity is called from another activity
+            Bundle bundle = getIntent().getExtras();
+            String jsonString = (String) bundle.getString("TASK");
+
+            Gson gson = new GsonBuilder().create();
+            Task recivedTask = gson.fromJson(jsonString, Task.class);
+            this.task = recivedTask;
+            System.out.println("bobobbobob /n"+this.task);
+            updateGuiFromRecievdeTask();
+            updateMode = true;
+            // update gui elements
+            // update boolean to update state
+            // if update state, then find task and update instead of add to model
+        }
+
     }
 
+    public void updateGuiFromRecievdeTask(){
+
+        // TITLE
+        EditText title = ((EditText) findViewById(R.id.navnoverskrift));
+        title.setText(task.name);
+        // CATEGORY
+        if(task.category != null){
+            final TextView text = (TextView) findViewById(R.id.categoryText);
+            text.setText(task.category.name);
+            final LinearLayout colorPanel = (LinearLayout) findViewById(R.id.blueBox);
+            colorPanel.setBackgroundColor(Color.parseColor(task.category.corlorString));
+            CheckBox categoryCheckBox = (CheckBox) findViewById(R.id.categoryCheckBox);
+            categoryCheckBox.setChecked(true);
+            categoryCheckBox.setClickable(true);
+        }
+
+        // PROJECT NOT YET MADE
+
+        // DEADLINE
+        if(task.deadline != null){
+            final SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
+            TextView deadLineView = (TextView) findViewById(R.id.deadlineText);
+            deadLineView.setText((dateFormatter.format(task.deadline.getTime())).substring(0,16));
+            CheckBox deadLineCheckBox = (CheckBox) findViewById(R.id.deadlineCheckBox);
+            deadLineCheckBox.setChecked(true);
+            deadLineCheckBox.setClickable(true);
+        }
+
+        // REMINDER
+        if(task.reminder != null){
+            final SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
+            TextView reminderView = (TextView) findViewById(R.id.reminderText);
+            reminderView.setText((dateFormatter.format(task.reminder.getTime())).substring(0,16));
+            CheckBox reminderCheckBox = (CheckBox) findViewById(R.id.reminderCheckBox);
+            reminderCheckBox.setChecked(true);
+            reminderCheckBox.setClickable(true);
+        }
+
+        // START DATE
+        if(task.startDateTime != null){
+            final SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
+            TextView startDateView = (TextView) findViewById(R.id.startDate);
+            startDateView.setText((dateFormatter.format(task.startDateTime.getTime())).substring(0,16));
+            CheckBox startDateCheckBox = (CheckBox) findViewById(R.id.startDateCheckBox);
+            startDateCheckBox.setChecked(true);
+            startDateCheckBox.setClickable(true);
+        }
+
+        // ESTIMATE
+        if(task.estimated){
+            TextView estimateText = (TextView) findViewById(R.id.estimateText);
+            LinearLayout estimateLayot = (LinearLayout) findViewById(R.id.estimateInput);
+            CheckBox estimateCheckBox = (CheckBox) findViewById(R.id.estimateCheckBox);
+            estimateText.setVisibility(View.GONE);
+            estimateLayot.setVisibility(View.VISIBLE);
+            estimateCheckBox.setChecked(true);
+            estimateCheckBox.setClickable(true);
+
+
+            EditText stimateDays = ((EditText) findViewById(R.id.days));
+            stimateDays.setText(""+task.estimatedDays);
+            EditText estimateHours = ((EditText) findViewById(R.id.hours));
+            estimateHours.setText(""+task.estimateHours);
+            EditText estimateMin = ((EditText) findViewById(R.id.min));
+            estimateMin.setText(""+task.estimateMin);
+
+
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -426,14 +539,36 @@ public class TaskActivity extends ActionBarActivity {
         if(!name.isEmpty()){
             // check om der skal opdateres eller laves en ny
 
-            // hvis der skal updateres, find den eksisterende task og opdatere den
-            task.name = name;
-            model.addTaskWithPriorety(task);
-            System.out.println("TASK ADDED");
-            System.out.println(task);
+            if(updateMode){
 
-            // vend tilbage.
-            startActivity(new Intent(this,MainActivity.class));
+                task.name = name;
+                for(Task t : model.taskList){
+                    if(t.id == this.task.id){
+                        t.copyOver(this.task);
+                    }
+                }
+
+                Intent i = new Intent(getBaseContext(), MainActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("SUB_MENU", 1);
+                i.putExtras(bundle);
+                startActivity(i);
+
+            }else{
+
+                task.name = name;
+                model.addTaskWithPriorety(task);
+                System.out.println("TASK ADDED");
+                System.out.println(task);
+
+                // vend tilbage.
+                Intent i = new Intent(getBaseContext(), MainActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("SUB_MENU", 1);
+                i.putExtras(bundle);
+                startActivity(i);
+            }
+
         }else {
             // lav toast
             Toast.makeText(getApplicationContext(), "Give youre task a name",

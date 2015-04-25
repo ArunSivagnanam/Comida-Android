@@ -67,7 +67,7 @@ public class MainActivity extends ActionBarActivity implements Observer{
        }
        if(getIntent().getExtras()!= null){ // can specify witch menu fragment is shown when activity is called from another activity
            Bundle bundle = getIntent().getExtras();
-           int menuNr = (Integer) bundle.getInt("MenuItem");
+           int menuNr = (Integer) bundle.getInt("SUB_MENU");
            loadMenuFragment(menuNr);
          }
     }
