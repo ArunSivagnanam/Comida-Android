@@ -1,4 +1,4 @@
-package com.nutra_o.nutra_o.activitys;
+package com.nutra_o.nutra_o.test;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -21,6 +21,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.nutra_o.nutra_o.R;
+import com.nutra_o.nutra_o.activitys.MainActivity;
 import com.nutra_o.nutra_o.test.ItemAutoCompleteAdapter;
 import com.nutra_o.nutra_o.models.ApplicationImpl;
 import com.nutra_o.nutra_o.models.ApplicationModel;

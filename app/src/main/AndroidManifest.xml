@@ -30,8 +30,12 @@
             android:label="@string/title_activity_test" >
         </activity>
         <activity
-            android:name=".activitys.IndkoebsListEditActivity"
+            android:name=".test.IndkoebsListEditActivity"
             android:label="@string/title_activity_shopping_list_edit" >
+        </activity>
+        <activity
+            android:name=".activitys.TaskActivity"
+            android:label="@string/title_activity_task" >
         </activity>
     </application>
 

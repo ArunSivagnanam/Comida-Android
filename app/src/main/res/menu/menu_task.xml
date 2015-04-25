@@ -1,12 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.nutra_o.nutra_o.test.IndkoebsListEditActivity">
+    tools:context="com.nutra_o.nutra_o.activitys.TaskActivity">
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
-
-    <item android:id="@+id/save" android:title="Save"
-        android:orderInCategory="200" app:showAsAction="always"
-        android:icon="@drawable/ic_launcher"/>
-
 </menu>

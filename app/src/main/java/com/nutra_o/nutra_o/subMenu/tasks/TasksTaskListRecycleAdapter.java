@@ -62,6 +62,10 @@ public class TasksTaskListRecycleAdapter extends RecyclerView.Adapter<TasksTaskL
         boolean mIsViewExpanded = false;
         double expandingHeight = 3;
 
+        Dialog dialog;
+
+        Category chosenCategory;
+
 
 
         public ViewHolder(View itemView, TasksFragment currentFragment) {
@@ -85,6 +89,9 @@ public class TasksTaskListRecycleAdapter extends RecyclerView.Adapter<TasksTaskL
             procentageCompleted = (TextView) itemView.findViewById(R.id.procentageCompleted);
             seekBar = (SeekBar) itemView.findViewById(R.id.seekBar2);
 
+            dialog = new Dialog(categoryText.getContext());
+            dialog.setContentView(R.layout.category_dialog);
+            chosenCategory = new Category();
         }
 
 
@@ -153,7 +160,7 @@ public class TasksTaskListRecycleAdapter extends RecyclerView.Adapter<TasksTaskL
 
         if(t.category != null){
             holder.colorPanel.setBackgroundColor(Color.parseColor(t.category.corlorString));
-            setUpCategoryPicter(holder.categoryText,holder.category,t,holder.colorPanel);
+            setUpCategoryPicter(holder,holder.categoryText,holder.category,t,holder.colorPanel);
 
         }else{ // standard category color
             holder.colorPanel.setBackgroundColor(Color.parseColor("#ffe2e2e2"));
@@ -198,7 +205,7 @@ public class TasksTaskListRecycleAdapter extends RecyclerView.Adapter<TasksTaskL
                     t.procentageCompleted = progress;
                     holder.procentageCompleted.setText(progress+"%");
                     System.out.println("PROGRESS "+progress);
-                    notifyDataSetChanged();
+//                    notifyDataSetChanged();
                 }
 
                 @Override
@@ -221,19 +228,18 @@ public class TasksTaskListRecycleAdapter extends RecyclerView.Adapter<TasksTaskL
 
     // TODO flyt alle picker objecterne in i view holder r h
 
-    public void setUpCategoryPicter(final TextView dialogView, LinearLayout dialogLinearLayout, final Task t, final RelativeLayout colorPanel){
+    public void setUpCategoryPicter(final ViewHolder holder, final TextView dialogView, LinearLayout dialogLinearLayout, final Task t, final RelativeLayout colorPanel){
 
         // custom dialog
-        final Dialog dialog = new Dialog(dialogView.getContext());
-        dialog.setContentView(R.layout.category_dialog);
-        dialog.setTitle("Choose category");
 
 
-        final TextView text = (TextView) dialog.findViewById(R.id.categoryText);
+        holder.dialog.setTitle("Choose category");
+
+        final TextView text = holder.categoryText;
         text.setText("Choose category");
 
-        LinearLayout linearLayout = (LinearLayout) dialog.findViewById(R.id.categoryContainer);
-        final Category chosenCategory = new Category();
+        LinearLayout linearLayout = (LinearLayout) holder.dialog.findViewById(R.id.categoryContainer);
+
 
         for(int i = 0; i<currentFragment.model.categories.size(); i++){
             String color = currentFragment.model.categories.get(i).corlorString;
@@ -242,7 +248,7 @@ public class TasksTaskListRecycleAdapter extends RecyclerView.Adapter<TasksTaskL
             RippleDrawable drawable = (RippleDrawable) currentFragment.getResources().getDrawable(R.drawable.fab);
             drawable.getDrawable(0).setColorFilter(Color.parseColor(color), PorterDuff.Mode.SRC_ATOP);
 
-            CircleImageView c = new CircleImageView(dialog.getContext());
+            CircleImageView c = new CircleImageView(holder.dialog.getContext());
             LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(150,150);
             p.setMargins(10,0,10,0);
             c.setLayoutParams(p);
@@ -254,22 +260,22 @@ public class TasksTaskListRecycleAdapter extends RecyclerView.Adapter<TasksTaskL
                 @Override
                 public void onClick(View v) {
                     text.setText(currentFragment.model.categories.get(finalI).name);
-                    chosenCategory.copyOver(currentFragment.model.categories.get(finalI));
+                    holder.chosenCategory.copyOver(currentFragment.model.categories.get(finalI));
                 }
             });
         }
 
 
-        Button dialogButton = (Button) dialog.findViewById(R.id.testButton);
+        Button dialogButton = (Button) holder.dialog.findViewById(R.id.testButton);
         // if button is clicked, close the custom dialog
         dialogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                t.category.copyOver(chosenCategory);
+                t.category.copyOver(holder.chosenCategory);
                 colorPanel.setBackgroundColor(Color.parseColor(t.category.corlorString));
                 dialogView.setText(t.category.name);
                 notifyDataSetChanged();
-                dialog.dismiss();
+                holder.dialog.dismiss();
             }
         });
 
@@ -277,7 +283,7 @@ public class TasksTaskListRecycleAdapter extends RecyclerView.Adapter<TasksTaskL
             @Override
             public void onClick(View v) {
                 System.out.println("Whooooooooooooooooooooop");
-                dialog.show();
+                holder.dialog.show();
             }
         });
 

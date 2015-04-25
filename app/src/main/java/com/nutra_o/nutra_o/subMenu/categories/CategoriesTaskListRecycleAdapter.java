@@ -69,7 +69,7 @@ public class CategoriesTaskListRecycleAdapter extends RecyclerView.Adapter<Categ
 
         Task t = taskLists.get(position);
         holder.taskName.setText(t.name);
-        holder.creationData.setText((t.creationTime.toString()));
+        holder.creationData.setText((t.startDateTime.toString()));
         holder.layout.setBackgroundColor(t.category.color);
 
     }

@@ -1,5 +1,6 @@
 package com.nutra_o.nutra_o.subMenu.tasks;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -17,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.support.v7.widget.Toolbar;
 
 import com.nutra_o.nutra_o.R;
+import com.nutra_o.nutra_o.activitys.TaskActivity;
 import com.nutra_o.nutra_o.models.ApplicationImpl;
 import com.nutra_o.nutra_o.models.ApplicationModel;
 import com.nutra_o.nutra_o.models.Task;
@@ -24,12 +26,14 @@ import com.nutra_o.nutra_o.subMenu.categories.CategoriesTaskListRecycleAdapter;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 import static android.support.v7.widget.RecyclerView.OnScrollListener;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TasksFragment extends android.support.v4.app.Fragment {
+public class TasksFragment extends android.support.v4.app.Fragment implements View.OnClickListener {
 
     ApplicationImpl application;
     public ApplicationModel model;
@@ -37,6 +41,8 @@ public class TasksFragment extends android.support.v4.app.Fragment {
     RecyclerView cardList;
     LinearLayoutManager layoutManager;
     TasksTaskListRecycleAdapter adapter;
+
+    CircleImageView addButton;
 
     ArrayList<Task> taskList = new ArrayList<Task>();
 
@@ -56,14 +62,16 @@ public class TasksFragment extends android.support.v4.app.Fragment {
         taskList = model.getTaskList();
 
         cardList = (RecyclerView) v.findViewById(R.id.taskCards_RecyclerView);
+        addButton = (CircleImageView) v.findViewById(R.id.addButton);
+        addButton.setOnClickListener(this);
 
         cardList.setHasFixedSize(true);
         // set adapter
         adapter = new TasksTaskListRecycleAdapter(taskList,this);
-        adapter.setHasStableIds(true);
         cardList.setAdapter(adapter);
         layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        layoutManager.setRecycleChildrenOnDetach(true);
         cardList.setLayoutManager(layoutManager);
         cardList.setItemAnimator(null);
 
@@ -207,8 +215,11 @@ public class TasksFragment extends android.support.v4.app.Fragment {
     }
 
 
-    public void onCardClick(View v) {
+    @Override
+    public void onClick(View v) {
 
-
+        if(v == addButton){
+            startActivity(new Intent(getActivity(),TaskActivity.class));
+        }
     }
 }

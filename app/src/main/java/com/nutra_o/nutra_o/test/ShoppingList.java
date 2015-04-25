@@ -20,6 +20,8 @@ public class ShoppingList {
     // model specific
     public ArrayList<ShoppingListItem> itemList;
 
+    /*
+
     @Override
     public String toString() {
         return "ShoppingList{" +
@@ -32,4 +34,5 @@ public class ShoppingList {
                 ", itemList=" + itemList +
                 '}';
     }
+    */
 }

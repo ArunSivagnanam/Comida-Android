@@ -1,0 +1,412 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.nutra_o.nutra_o.test.IndkoebsListEditActivity"
+    android:background="@android:color/white">
+
+    // toolbar
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/app_bar">
+
+    </include>
+
+    // main settings
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+
+        // title blue contents
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="@color/colorBlueDark"
+            android:orientation="vertical"
+            android:elevation="4dp"
+            android:id="@+id/blueBox">
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/navnoverskrift"
+                android:textColorHint="@android:color/white"
+                android:textColor="@android:color/white"
+                android:hint="Tittel"
+                android:backgroundTint="@android:color/white"
+                android:textSize="18dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="80dp"
+                />
+        </LinearLayout>
+
+        // category
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/categoryLayout"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            android:background="@drawable/ripple"
+
+            >
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/category_imageButton"
+                android:clickable="true"
+                android:src="@drawable/ic_action_cat"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="20dp"
+                android:text="Category"
+                android:textSize="20dp"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/categoryText" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:layout_gravity="right">
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/categoryCheckBox"
+                    android:checked="false"
+                    android:layout_marginRight="50dp"
+                    android:onClick="categorySetting"
+                    android:clickable="false"
+                    />
+
+                </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        // project
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/projectLayout"
+            android:clickable="true"
+            android:background="@drawable/ripple"
+            android:layout_marginTop="5dp"
+
+            >
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/project_imageButton"
+                android:clickable="true"
+                android:src="@drawable/ic_action_cat"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="20dp"
+                android:text="Project"
+                android:textSize="20dp"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/projectText" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:layout_gravity="right">
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/projectCheckBox"
+                    android:checked="false"
+                    android:layout_marginRight="50dp"
+                    />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        // deadline
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/deadlineLayout"
+            android:clickable="true"
+            android:background="@drawable/ripple"
+            android:layout_marginTop="5dp"
+
+            >
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/deadline_imageButton"
+                android:clickable="true"
+                android:src="@drawable/ic_action_deadline"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="20dp"
+                android:text="Deadline"
+                android:textSize="20dp"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/deadlineText" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:layout_gravity="right">
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/deadlineCheckBox"
+                    android:checked="false"
+                    android:layout_marginRight="50dp"
+                    android:onClick="deadLineSetting"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        // reminder
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/reminderLayout"
+            android:clickable="true"
+            android:background="@drawable/ripple"
+            android:layout_marginTop="5dp"
+
+            >
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/reminder_imageButton"
+                android:clickable="true"
+                android:src="@drawable/ic_action_reminder"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="20dp"
+                android:text="Reminder"
+                android:textSize="20dp"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/reminderText" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:layout_gravity="right">
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/reminderCheckBox"
+                    android:checked="false"
+                    android:layout_marginRight="50dp"
+                    android:onClick="reminderSetting"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        // start date
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/startDateLayout"
+            android:clickable="true"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/ripple"
+
+            >
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/startDate_imageButton"
+                android:clickable="true"
+                android:src="@drawable/ic_action_reminder"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="20dp"
+                android:text="Start date"
+                android:textSize="20dp"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/startDate" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:layout_gravity="right">
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/startDateCheckBox"
+                    android:checked="false"
+                    android:layout_marginRight="50dp"
+                    android:onClick="startDateSetting"
+                    android:clickable="false"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        // Estimate
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/estimateLayout"
+            android:clickable="true"
+            android:background="@drawable/ripple"
+
+            >
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/estimate_imageButton"
+                android:clickable="true"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_action_reminder"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="20dp"
+                android:text="Estimate"
+                android:textSize="20dp"
+                android:layout_gravity="center_vertical"
+                android:visibility="visible"
+                android:id="@+id/estimateText" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:visibility="gone"
+                android:id="@+id/estimateInput">
+
+                <EditText
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:id="@+id/days"
+                    android:hint="Days"
+                    android:textSize="14dp"
+                    android:layout_marginLeft="20dp"/>
+
+                <EditText
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:id="@+id/hours"
+                    android:hint="Hours"
+                    android:textSize="14dp"/>
+
+                <EditText
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:id="@+id/min"
+                    android:hint="Min"
+                    android:textSize="14dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:layout_gravity="right">
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/estimateCheckBox"
+                    android:checked="false"
+                    android:layout_marginRight="50dp"
+                    android:onClick="estimateSetting"
+                    android:clickable="false"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Save"
+                android:id="@+id/button3"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="29dp"
+                android:onClick="createTask"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</FrameLayout>

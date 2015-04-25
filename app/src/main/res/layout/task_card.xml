@@ -147,7 +147,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="50%"
+                        android:text="0%"
                         android:id="@+id/procentageCompleted"
                         android:textSize="12dp"
                         android:layout_marginLeft="40dp"

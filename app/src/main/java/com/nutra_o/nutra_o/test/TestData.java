@@ -60,7 +60,6 @@ public class TestData {
         Task t1 = new Task();
         t1.id = 1;
         t1.name = "Rydop";
-        t1.description = "ryd op paa vaerelset";
         t1.setDeadLine(new Date());
         t1.setReminder(new Date());
         t1.estimated = true;
@@ -75,32 +74,26 @@ public class TestData {
         Task t2 = new Task();
         t2.id = 2;
         t2.name = "Lav mad";
-        t2.description = "fix";
         t2.category = new Category(2,"NetCompany Opgaver",Color.parseColor("#E76F51"));
         t2.category.corlorString = "#E76F51";
 
         Task t3 = new Task();
         t3.id = 3;
         t3.name = "Hop i søen";
-        t3.description = "bob";
         t3.category = new Category(2,"NetCompany Opgaver",Color.parseColor("#E76F51"));
         t3.category.corlorString = "#E76F51";
 
         Task t4 = new Task();
         t4.id = 4;
         t4.name = "Slap af";
-        t4.description = "bobo";
         t4.category = null;
 
 
         Task t5 = new Task();
         t5.id = 5;
         t5.name = "Lav lektier";
-        t5.description = "bobo";
         t5.category = new Category(5,"NetCompany Opgaver",Color.parseColor("#ff009769"));
         t5.category.corlorString = "#ff009769";
-
-
 
         addTaskWithPriorety(taskList, t1);
         addTaskWithPriorety(taskList, t2);
